@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="MainPane" minHeight="768.0" minWidth="1024.0" prefHeight="768.0"
+   prefWidth="1024.0" style="-fx-background-color: white; -fx-font-family: 'Gulim';" stylesheets="@CSS/AccountBook.css"
+   xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.e.caccount.AccountBookController">
+   <children>
+      <ScrollPane fx:id="TableScrollPane" vbarPolicy="NEVER" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <HBox fx:id="TableView" />
+         </content>
+      </ScrollPane>
+      <AnchorPane fx:id="ControllPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0">
+         <children>
+            <ComboBox fx:id="comboBox" layoutX="55.0" layoutY="55.0" onAction="#comboAction"
+               prefWidth="150.0" />
+            <TextField fx:id="user_name" layoutX="248.0" layoutY="52.0" prefHeight="31.0"
+               prefWidth="150.0" promptText="%key25" />
+            <TextField fx:id="user_amount" layoutX="422.0" layoutY="52.0" prefHeight="31.0"
+               prefWidth="150.0" promptText="%key26">
+            </TextField>
+            <Button fx:id="OkBtn" defaultButton="true" layoutX="591.0" layoutY="54.0"
+               mnemonicParsing="false" onAction="#InsertBtn" text="%key27" />
+            <Label ellipsisString="" layoutX="686.0" layoutY="58.0" text="%key36" />
+            <Label fx:id="TYPESUM" layoutX="767.0" layoutY="58.0" stylesheets="@CSS/AccountBook.css"
+               text="%key28" textOverrun="CLIP">
+            </Label>
+            <FlowPane layoutX="780.0" layoutY="140.0" prefHeight="30.0" prefWidth="230.0"
+               AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="140.0">
+               <children>
+                  <Circle fx:id="status" fill="#ff1f1f" radius="5.0" stroke="TRANSPARENT"
+                     strokeType="INSIDE" strokeWidth="0.0" />
+                  <Label fx:id="serverRunnig" text="%key37">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </FlowPane>
+         </children>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+      </AnchorPane>
+      <FlowPane fx:id="PlustBtn" prefHeight="40.0" prefWidth="40.0" AnchorPane.rightAnchor="10.0"
+         AnchorPane.topAnchor="10.0" />
+      <FlowPane fx:id="RegBtnPane" alignment="CENTER" prefHeight="150.0" prefWidth="300.0"
+         AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label fx:id="RegTitle" text="%key38">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="RegType" text="%key39">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="RegTxtField" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Button fx:id="RegBtn" mnemonicParsing="false" text="%key40">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="RegCancelBtn" mnemonicParsing="false" text="%key41" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>
