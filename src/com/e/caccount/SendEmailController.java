@@ -27,22 +27,20 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-// import javax.mail.Message;
-// import javax.mail.MessagingException;
-// import javax.mail.Session;
-// import javax.mail.Transport;
-// import javax.mail.internet.AddressException;
-// import javax.mail.internet.InternetAddress;
-// import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * FXML Controller class
  *
  * @author tritonle If the mail address is incorrect, I need to get a callback
  * method to catch this error
- * 
- * Error occurred during initialization of boot layer
-java.lang.LayerInstantiationException: Package com.sun.activation.registries in both module activation and module jakarta.activation
+ *
  */
 public class SendEmailController implements Initializable {
 
@@ -67,7 +65,7 @@ public class SendEmailController implements Initializable {
             calenderUtil = new CalendarUtil();
         }
         // 받는분 작성
-//        recipient.setText("cgk9135@daum.net");
+        recipient.setText("cgk9135@daum.net");
         // 본문내용 작성
         setListOnTheScreen();
     }
@@ -108,12 +106,6 @@ public class SendEmailController implements Initializable {
             }
         }
 
-        Map<String, String> mReceivedUser = observer.getManualReceivedUser();
-        tBody = tBody + "\n\n" + bundle.getString("key102") + "\n";
-        for (Map.Entry<String, String> entry : mReceivedUser.entrySet()) {
-            tBody = tBody + entry.getValue() + "(" + entry.getKey() + ") ";
-        }
-
         body.setText(tBody);
     }
 
@@ -131,60 +123,60 @@ public class SendEmailController implements Initializable {
 
     public void sendEmail() {
         // 창을 닫는다.
-        // stage.hide();
-        // Main.startProgressIndicator();
-        // new Thread(() -> {
-        //     try {
-        //         // 정보를 담기 위한 객체
-        //         Properties properties = System.getProperties();
-        //         // SMTP 서버 정보 설정
-        //         properties.put("mail.smtp.host", host);
-        //         properties.put("mail.smtp.port", port);
-        //         properties.put("mail.smtp.auth", "true");
-        //         properties.put("mail.smtp.ssl.enable", "true");
-        //         properties.put("mail.smtp.ssl.trust", host);
+        stage.hide();
+        Main.startProgressIndicator();
+        new Thread(() -> {
+            try {
+                // 정보를 담기 위한 객체
+                Properties properties = System.getProperties();
+                // SMTP 서버 정보 설정
+                properties.put("mail.smtp.host", host);
+                properties.put("mail.smtp.port", port);
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.ssl.enable", "true");
+                properties.put("mail.smtp.ssl.trust", host);
 
-        //         // 세션생성
-        //         Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-        //             String un = username;
-        //             String pw = password;
+                // 세션생성
+                Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                    String un = username;
+                    String pw = password;
 
-        //             protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-        //                 return new javax.mail.PasswordAuthentication(un, pw);
-        //             }
-        //         });
-        //         // 디버크 체크용
-        //         session.setDebug(true);
+                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                        return new javax.mail.PasswordAuthentication(un, pw);
+                    }
+                });
+                // 디버크 체크용
+                session.setDebug(true);
 
-        //         Message mimeMessage = new MimeMessage(session);
-        //         mimeMessage.setFrom(new InternetAddress(username));
-        //         mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient.getText()));
-        //         mimeMessage.setSubject(bundle.getString("key103") + calenderUtil.getToday());
-        //         mimeMessage.setText(body.getText());
+                Message mimeMessage = new MimeMessage(session);
+                mimeMessage.setFrom(new InternetAddress(username));
+                mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient.getText()));
+                mimeMessage.setSubject(bundle.getString("key103") + calenderUtil.getToday());
+                mimeMessage.setText(body.getText());
 
-        //         // Send Email
-        //         Transport.send(mimeMessage);
+                // Send Email
+                Transport.send(mimeMessage);
 
-        //         // 창을 닫는다.
-        //         Platform.runLater(() -> {
-        //             stage.close();
-        //             Main.stopProgressIndicator();
-        //         });
+                // 창을 닫는다.
+                Platform.runLater(() -> {
+                    stage.close();
+                    Main.stopProgressIndicator();
+                });
 
-        //         // 확인 메세지 보여주기
-        //         showAlert(bundle.getString("key104"));
-        //     } catch (AddressException ex) {
-        //         // Logger.getLogger(SendEmailController.class.getName()).log(Level.SEVERE, null, ex);
-        //         // Show Error Message
-        //         enableTextEdit();
-        //         showAlert(bundle.getString("key106"));
-        //     } catch (MessagingException ex) {
-        //         // Logger.getLogger(SendEmailController.class.getName()).log(Level.SEVERE, null, ex);
-        //         // Show Error Message
-        //         enableTextEdit();
-        //         showAlert(bundle.getString("key105"));
-        //     }
-        // }).start();
+                // 확인 메세지 보여주기
+                showAlert(bundle.getString("key104"));
+            } catch (AddressException ex) {
+                // Logger.getLogger(SendEmailController.class.getName()).log(Level.SEVERE, null, ex);
+                // Show Error Message
+                enableTextEdit();
+                showAlert(bundle.getString("key106"));
+            } catch (MessagingException ex) {
+                // Logger.getLogger(SendEmailController.class.getName()).log(Level.SEVERE, null, ex);
+                // Show Error Message
+                enableTextEdit();
+                showAlert(bundle.getString("key105"));
+            }
+        }).start();
     }
 
     private void enableTextEdit() {

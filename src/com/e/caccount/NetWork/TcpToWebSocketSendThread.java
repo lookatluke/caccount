@@ -7,9 +7,9 @@ package com.e.caccount.NetWork;
 
 import com.e.caccount.Message.Message;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  *
@@ -36,7 +36,7 @@ public class TcpToWebSocketSendThread extends Thread {
     public void sendMessage(Message msg) {
         try {
             String jsonMessage = convertToJson(msg);
-            outSt.write(jsonMessage.getBytes());
+            outSt.write(jsonMessage.getBytes("UTF-8"));
             outSt.flush();
         } catch (IOException ioe) {
             System.out.println("sendThread writeObject Exception Occurs");
