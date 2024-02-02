@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="790.0" minWidth="1024.0" prefHeight="790.0" 
+            prefWidth="1024.0" style="-fx-font-family: 'Gulim';" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.e.caccount.RootLayoutController">
+   <top>
+      <MenuBar style="-fx-background-color: #FFDB69;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="bundles1" mnemonicParsing="false">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#startOver" text="%key2">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#LoadData" text="%key3">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="%key4">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#SaveASData" text="%key5" />
+              <MenuItem mnemonicParsing="false" onAction="#ExitProgram" text="%key6" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="%key87">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#openReorderPage" text="%key7" />
+                  <MenuItem mnemonicParsing="false" onAction="#InsertMessiveData" text="단체입력" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="%key8">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#OpenServer" text="%key9" />
+                  <MenuItem mnemonicParsing="false" onAction="#CloseServer" text="%key10" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="%key12">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#openPersonalDataSearchPage" text="%key13" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%key14">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#SaveFileAsExcel" text="%key15" />
+                  <MenuItem mnemonicParsing="false" onAction="#SaveOneTypeToExcel" text="%key16" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%key17">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#OpenQRcodeMaker" text="%key18" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%key21">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#changeLanguage_en" text="%key22" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeLanguage_kr" text="%key23" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
